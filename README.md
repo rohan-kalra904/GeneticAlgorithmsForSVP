@@ -4,7 +4,7 @@ This repository contains the implementation and experimental results of a geneti
 
 ## Solution Flow
 
-![Solution Flow](flow.png)
+![Solution Flow](Flow.png)
 
 
 ## Getting Started
