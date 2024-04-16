@@ -49,16 +49,19 @@ End with an example of getting some data out of the system or using it
 for a little demo
 
 ### Command to run the code
+To compile multiple object files, you can follow the instructions in [this link](https://ornl-training.github.io/cpp-compiler-intro/03-object-files/):
 
-    g++ -o output_file MainCode.cpp -lfplll -lmpfr -lgmp
+```bash
+g++ -o output_file *.cpp -lfplll -lmpfr -lgmp
+
 
 replace the MainCode.cpp and output_file as needed, the intention is to show how to use flags
 
 ### Sample Tests
 
-The challenge who is the source of the paper referenced is :
+The challenge, which is the source of the paper referenced, can be found at : https://www.latticechallenge.org/svp-challenge .
 
-[SVPchallenge](https://www.latticechallenge.org/svp-challenge/)
+
 
 ## Authors
 
