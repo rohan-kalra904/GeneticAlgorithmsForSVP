@@ -14,7 +14,7 @@ To get started with the project, follow these steps:
 1. **Clone the Repository**: Begin by cloning this repository to your local machine using the following command:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/rohan-kalra904/GeneticAlgorithmsForSVP.git
 
 
 ### Prerequisites
