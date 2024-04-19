@@ -6,6 +6,8 @@ This repository contains the implementation and experimental results of a geneti
 
 ![Solution Flow](flow_.png)
 
+##Class Diagram
+![Class diagram](class_diagram.png)
 
 ## Getting Started
 
