@@ -1,5 +1,4 @@
 #include "preprocessing.h"
-
 template<class ZT,class FT>preProcessing<ZT,FT>::preProcessing(const char *input_filename,int flags_bkz,int flags_gso,int prec,FloatType float_type)
 {
     ZZ_mat<mpz_t>A;
@@ -7,7 +6,7 @@ template<class ZT,class FT>preProcessing<ZT,FT>::preProcessing(const char *input
     dim = A.get_rows();
     if(status==0)
     {
-        int status = bkz_reduction(A, 2, flags_bkz, float_type,prec);
+        int status = bkz_reduction(A, 20, flags_bkz, float_type,prec);
         MatGSO<ZT, FT> M(A, U, UT, flags_gso);
         M.update_gso();
         B = new ZT*[dim];

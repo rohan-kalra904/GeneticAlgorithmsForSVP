@@ -1,4 +1,6 @@
 #include "Individual.h"
+template<class ZT, class FT>
+ZT* Individual<ZT, FT>::common_memory = new ZT[1];
 template<class ZT,class FT>
 ZT* Individual<ZT,FT>::matrix_multiply(ZT* vec, ZT** mat, int dim) {
     ZT* result = new ZT[dim];
@@ -56,7 +58,7 @@ Individual<ZT,FT>::Individual(int dim, FT** mu, FT* alpha, ZT** B, FT** Bstar) {
         t.rnd(t);
         ZT t_z;
         t_z.set_f(t);
-        x[i].sub(y[i],t_z);
+        x[i].sub(y[i],t_z);    
     }
     ZT* vect = matrix_multiply(x, B, dim);
     this->norm = get_norm(vect, dim);
@@ -75,13 +77,28 @@ FT Individual<ZT,FT>::get_norm(ZT* vect, int dim) {
 template<class ZT,class FT>
 Individual<ZT,FT>::~Individual() 
 {
-  
-        // Destructor implementation
-        // delete[] x;
-        // delete[] y;
+    // if(this->x!=NULL)
+    // {
+    //     for(int i = 0;i<60;i++)cout<<x[i]<<" ";
+    //     cout<<"\n";
+    // }
+    // // else  cout<<"Hello\n";
+    // if(this->y!=NULL)
+    // {
+    //     for(int i = 0;i<60;i++)cout<<y[i]<<" ";
+    //     cout<<"\n";
+    //     // delete[]y;
+
+    // }
+    // else cout<<"Hello\n";
 }
 template<class ZT,class FT>
 Individual<ZT,FT>::Individual()
 {
+    this->x = NULL;
+    this->y = NULL;
+    this->norm = 0.0;
+    // this->x=common_memory;
+    // this->y=common_memory;
     // x=new ZT[]
 }

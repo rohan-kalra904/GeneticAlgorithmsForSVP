@@ -13,6 +13,7 @@ template<class ZT,class FT>
 class Individual {
 public:
     FT norm;
+    static  ZT* common_memory; // Initialization with nullptr
     ZT* x;
     ZT* y;
     FT get_norm(ZT* vect, int dim);

@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.ejs": "html",
+        "cmath": "cpp",
+        "chrono": "cpp",
+        "random": "cpp"
+    }
+}

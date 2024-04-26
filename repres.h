@@ -26,7 +26,7 @@ public:
     FT get_norm(ZT* vect, int dim);
     FT get_norm(FT* vect, int dim);
     bool* encode(ZT* y, ZT totalLength);
-    void initialise();
+    void initialise(Individual<ZT,FT>v0);
     repres(const char *input_filename,int flags_bkz,int flags_gso,int prec,FloatType float_type);
     ZT **get_B();
     FT** get_mu();

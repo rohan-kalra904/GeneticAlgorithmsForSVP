@@ -1,6 +1,9 @@
 #include "repres.h"
+using namespace std;
+using namespace fplll;
 template<class ZT,class FT>repres<ZT,FT>::repres(const char *input_filename,int flags_bkz,int flags_gso,int prec,FloatType float_type)
 {
+
         preprocess = new preProcessing<ZT,FT>(input_filename, flags_bkz, flags_gso, prec, float_type);
         dim = preprocess->dim;
         pop_size = 2*dim;
@@ -16,7 +19,7 @@ template<class ZT,class FT>repres<ZT,FT>::repres(const char *input_filename,int 
             totLength.add(totLength,length[i]);
         }
 }
-template<class ZT,class FT>
+template <class ZT,class FT>
 FT repres<ZT,FT>::get_norm(FT* vect, int dim) {
     FT norm = 0.0;
     for (int i = 0; i < dim; ++i) {
@@ -25,6 +28,7 @@ FT repres<ZT,FT>::get_norm(FT* vect, int dim) {
     }
     return sqrt(norm);
 }
+
 
 template <class ZT,class FT>
 FT repres<ZT,FT>::get_norm(ZT* vect, int dim) {
@@ -84,9 +88,24 @@ bool* repres<ZT,FT>::encode(ZT* y, ZT totalLength) {
 }
 
 template<class ZT,class FT>
-void repres<ZT,FT>::initialise() {
+void repres<ZT,FT>::initialise(Individual<ZT,FT>v0) {
+    //cout<<pop_size<<endl;
+
     population = new Individual<ZT,FT>[pop_size];
-    for (int i = 0; i < pop_size; i++) {
+    if(v0.x==NULL)
+    {
+        population[0].y = new ZT[dim] ;
+        population[0].y[0] = 1;
+        for(int i = 1;i<dim;i++)population[0].y[i] = 0;
+
+        population[0].x = population[0].YtoX(population[0].y,preprocess->mu,dim);
+        ZT* vect = population[0].matrix_multiply(population[0].x, preprocess->B,dim);
+        population[0].norm = population[0].get_norm(vect,dim);
+    }
+    else 
+        population[0] = v0;
+    for (int i = 1; i < pop_size; i++) {
+       // cout<<1<<endl;
         population[i] = Individual<ZT,FT>(dim, preprocess->mu, alpha, preprocess->B, preprocess->Bstar);
     }
 }
